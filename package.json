@@ -1,0 +1,49 @@
+{
+  "name": "forum-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "mocha --require test/setup.js",
+    "start": "node src/server",
+    "dev": "cross-env nodemon src/server",
+    "migrate": "cross-env postgrator --config postgrator-config.js",
+    "migrate:test": "cross-env env NODE_ENV=test npm run migrate",
+    "migrate:production": "cross-env SSL=true DATABASE_URL=$(heroku config:get DATABASE_URL) npm run migrate",
+    "predeploy": "npm audit && npm run migrate:production",
+    "deploy": "git push heroku master"
+  },
+  "keywords": [],
+  "engines": {
+    "node": "12.13.1"
+  },
+  "author": "Dan Bartlett <danbart909@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.0",
+    "date-fns": "^2.11.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.21.2",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^0.20.10",
+    "morgan": "^1.9.1",
+    "pg": "^7.18.2",
+    "postgrator-cli": "^3.3.0",
+    "valid-url": "^1.0.9",
+    "winston": "^3.2.1",
+    "xss": "^1.0.6"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "enzyme-to-json": "^3.4.4",
+    "mocha": "^7.0.1",
+    "nodemon": "^2.0.2",
+    "react-test-renderer": "^16.13.0",
+    "supertest": "^4.0.2"
+  }
+}
