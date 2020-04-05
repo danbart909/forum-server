@@ -36,16 +36,16 @@ usersRouter
   .post(bodyParser, (req, res, next) => {
     const newUser = req.body
     const db = req.app.get('db')
-    const { username, realname, password } = newUser
+    const { username, realname, password } = newUser.user
 
-    for (const field of ['username', 'realname', 'password']) {
-      if (!newUser[field]) {
-        logger.error(`${field} is required`)
-        return res.status(400).send({
-          error: { message: `'${field}' is required` }
-        })
-      }
-    }
+    // for (const field of ['username', 'realname', 'password']) {
+    //   if (!newUser[field]) {
+    //     logger.error(`${field} is required`)
+    //     return res.status(400).send({
+    //       error: { message: `'${field}' is required` }
+    //     })
+    //   }
+    // }
 
     // const passwordError = UsersService.validatePassword(password)
 

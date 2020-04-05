@@ -14,9 +14,9 @@ const UsersService = {
   getById(knex, id) {
     return knex.from('users').select('*').where('id', id)
   },
-  insertUser(knex, newReply) {
+  insertUser(knex, newUser) {
     return knex
-      .insert(newReply)
+      .insert(newUser)
       .into('users')
       .returning('*')
       .then(rows => {
@@ -28,10 +28,10 @@ const UsersService = {
       .where({ id })
       .delete()
   },
-  updateUser(knex, id, newReplyFields) {
+  updateUser(knex, id, newUserFields) {
     return knex('users')
       .where({ id })
-      .update(newReplyFields)
+      .update(newUserFields)
   },
   validatePassword(password) {
     // if (password.length < 7) {
