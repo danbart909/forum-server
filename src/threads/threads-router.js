@@ -21,7 +21,7 @@ threadsRouter
 
   .get((req, res, next) => {
     const db = req.app.get('db')
-    ThreadsService.getThreads(db)
+    ThreadsService.getAllThreads(db)
     .then(threads => {
       // res.json(threads.map(serializeThreads))
       res.json(threads)
@@ -103,16 +103,12 @@ threadsRouter
         })
       }
 
-      // if (error) return res.status(400).send(error)
       const { thread_id } = req.params
       const db = req.app.get('db')
-
-      console.log(req.body, req.params)
 
       ThreadsService.updateThread(db, thread_id, newThreads)
         .then(() => {
           res.status(204)
-          // res.status(204).end()
         })
         .catch(next)
 

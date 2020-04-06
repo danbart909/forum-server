@@ -1,10 +1,9 @@
 const ThreadsService = {
   getThreads(knex) {
-    return knex
-      .from('threads')
+    return knex('threads')
+      .join('timetracker', 'timetracker.id', '=', 'threads.id')
       .select('*')
-      .orderBy('id', 'asc')
-      // .innerjoin('timetracker', 'threads.id', '=', 'timetracker.id')
+      .orderBy('timetracker.date_modified', 'desc')
   },
   getAllThreads(knex) {
     return knex.select('*').from('threads').orderBy('id', 'asc')

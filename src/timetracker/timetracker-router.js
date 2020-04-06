@@ -8,14 +8,6 @@ const { requireAuth } = require('../middleware/jwt-auth')
 const timeRouter = express.Router()
 const bodyParser = express.json()
 
-// const serializeThreads = thread => ({
-//   id: thread.id,
-//   author: xss(thread.author),
-//   name: xss(thread.name),
-//   op: xss(thread.op),
-//   date_created: thread.date_created
-// })
-
 timeRouter
   .route('/')
 
@@ -29,19 +21,8 @@ timeRouter
   })
 
   .post(bodyParser, (req, res, next) => {
-    // const { id, time } = req.body
     const db = req.app.get('db')
-    console.log(req.body)
     newTime = new Date()
-
-    // for (const field of ['author', 'name', 'op']) {
-    //   if (!newTime[field]) {
-    //     logger.error(`${field} is required`)
-    //     return res.status(400).send({
-    //       error: { message: `'${field}' is required` }
-    //     })
-    //   }
-    // }
 
     TimetrackerService.insertTime(db, newTime)
       .then(time => {
@@ -62,12 +43,6 @@ timeRouter
       const db = req.app.get('db')
       TimetrackerService.getById(db, time_id)
         .then(time => {
-        //   if (!time) {
-        //     logger.error(`Thread with id ${time_id} not found.`)
-        //     return res.status(404).json({
-        //       error: { message: `Thread Not Found` }
-        //     })
-        //   }
           res.time = time
           next()
         })
@@ -95,8 +70,6 @@ timeRouter
 
       const { time_id } = req.params
       const db = req.app.get('db')
-
-      console.log(req.body, req.params)
 
       TimetrackerService.updateTime(db, time_id, newTime)
         .then(() => {
