@@ -35,16 +35,6 @@ describe('Protected endpoints', function() {
   )
 
   const protectedEndpoints = [
-    // {
-    //   name: 'GET /api/threads/:id',
-    //   path: '/api/threads/1',
-    //   method: supertest(app).get,
-    // },
-    // {
-    //   name: 'GET /api/replies',
-    //   path: '/api/threads/1',
-    //   method: supertest(app).get,
-    // },
     {
       name: 'POST /api/replies',
       path: '/api/replies',

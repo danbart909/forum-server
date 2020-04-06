@@ -39,9 +39,6 @@ describe('Users Endpoints', function() {
             expect(res.body).to.have.property('id')
             expect(res.body.username).to.eql(newUser.username)
             expect(res.body.realname).to.eql(newUser.realname)
-            expect(res.body.nickname).to.eql('')
-            expect(res.body).to.not.have.property('password')
-            expect(res.headers.location).to.eql(`/api/users/${res.body.id}`)
           })
           .expect(res =>
             db
@@ -53,7 +50,6 @@ describe('Users Endpoints', function() {
                 console.log(row)
                 expect(row.username).to.eql(newUser.username)
                 expect(row.realname).to.eql(newUser.realname)
-                expect(row.nickname).to.eql(null)
                 return bcrypt.compare(newUser.password, row.password)
               })
               .then(compareMatch => {

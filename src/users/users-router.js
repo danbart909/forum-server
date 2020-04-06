@@ -36,7 +36,7 @@ usersRouter
   .post(bodyParser, (req, res, next) => {
     const newUser = req.body
     const db = req.app.get('db')
-    const { username, realname, password } = newUser.user
+    const { username, realname, password } = newUser
 
     // for (const field of ['username', 'realname', 'password']) {
     //   if (!newUser[field]) {
