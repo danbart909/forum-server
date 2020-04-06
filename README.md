@@ -16,6 +16,8 @@ Nothing is required beyond the initial 'npm install'. All required dependencies 
 
 The client is based on react, and everything needed is obtained via npm install. Nothing extra is needed to make this work.
 
+express.js, node.js, postgresql, knex
+
 ## Links
 
 Thinkful Forum Client GitHub Repo: https://github.com/danbart909/forum-client
