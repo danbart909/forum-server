@@ -1,4 +1,4 @@
-# Title: Thinkful Forum (Server)
+# Thinkful Forum (Server)
 
 ## Description
 
