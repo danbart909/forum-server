@@ -3,6 +3,7 @@ const express = require('express')
 const xss = require('xss')
 const logger = require('../logger')
 const RepliesService = require('./replies-service')
+const ThreadsService = require('../threads/threads-service')
 const { requireAuth } = require('../middleware/jwt-auth')
 
 const repliesRouter = express.Router()
@@ -54,6 +55,12 @@ repliesRouter
           .status(201)
           .location(path.posix.join(req.originalUrl, `${reply.id}`))
           .json(serializeReply(reply))
+      })
+      .catch(next)
+
+    ThreadsService.updateThreadDate(db, threadid)
+      .then(() => {
+        res.status(204)
       })
       .catch(next)
   })

@@ -45,6 +45,11 @@ threadsRouter
 
     ThreadsService.insertThread(db, newThread)
       .then(thread => {
+        ThreadsService.updateThreadDate(db, thread.id)
+          .then(() => {
+            res.status(204)
+          })
+      .catch(next)
         logger.info(`Thread with id ${thread.id} created.`)
         res
           .status(201)

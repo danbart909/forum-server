@@ -27,7 +27,6 @@ usersRouter
     const db = req.app.get('db')
     UsersService.getUsers(db)
     .then(user => {
-      // res.json(user.map(serializeUsers))
       res.json(user)
     })
     .catch(next)
@@ -37,20 +36,6 @@ usersRouter
     const newUser = req.body
     const db = req.app.get('db')
     const { username, realname, password } = newUser
-
-    // for (const field of ['username', 'realname', 'password']) {
-    //   if (!newUser[field]) {
-    //     logger.error(`${field} is required`)
-    //     return res.status(400).send({
-    //       error: { message: `'${field}' is required` }
-    //     })
-    //   }
-    // }
-
-    // const passwordError = UsersService.validatePassword(password)
-
-    // if (passwordError)
-    //   return res.status(400).json({ error: passwordError })
 
     UsersService.hasUserWithUserName(
       db,
@@ -77,7 +62,6 @@ usersRouter
                 res
                   .status(201)
                   .location(path.posix.join(req.originalUrl, `/`))
-                  // .json(this.serializeUsers(user))
               })
               .catch(next)
           })
@@ -107,7 +91,6 @@ usersRouter
     })
 
     .get((req, res) => {
-      // res.json(serializeUser(res.user))
       res.json(res.user)
     })
 
