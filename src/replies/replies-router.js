@@ -28,7 +28,6 @@ repliesRouter
     const db = req.app.get('db')
     RepliesService.getReplies(db)
     .then(replies => {
-      // res.json(replies.map(serializeReply))
       res.json(replies)
     })
     .catch(next)
@@ -86,7 +85,6 @@ repliesRouter
     })
 
     .get((req, res) => {
-      // res.json(serializeReply(res.reply))
       res.json(res.reply)
     })
 

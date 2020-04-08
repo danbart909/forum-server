@@ -23,7 +23,6 @@ threadsRouter
     const db = req.app.get('db')
     ThreadsService.getAllThreads(db)
     .then(threads => {
-      // res.json(threads.map(serializeThreads))
       res.json(threads)
     })
     .catch(next)

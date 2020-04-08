@@ -34,6 +34,9 @@ const UsersService = {
       .update(newUserFields)
   },
   validatePassword(password) {
+    
+    // logic commented out to make it easier for guests to register for testing purposes
+
     // if (password.length < 7) {
     //   return 'Password be longer than 7 characters'
     // }
