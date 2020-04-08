@@ -134,7 +134,7 @@ function makeExpectedThread(users, thread, replies=[]) {
     author: thread.author,
     name: thread.name,
     op: thread.op,
-    date_created: thread.date_created.toISOString()
+    date_modified: thread.date_created.toISOString()
   }
 }
 

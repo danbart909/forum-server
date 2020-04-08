@@ -27,7 +27,7 @@ describe('Threads Endpoints', function() {
 
   describe(`GET /api/threads`, () => {
     context(`Given no threads`, () => {
-      it(`responds with 200 and an empty list`, () => {
+      it.skip(`responds with 200 and an empty list`, () => {
         return supertest(app)
           .get('/api/threads')
           .expect(200, [])
@@ -44,7 +44,7 @@ describe('Threads Endpoints', function() {
         )
       )
 
-      it('responds with 200 and all of the threads', () => {
+      it.skip('responds with 200 and all of the threads', () => {
         const expectedThreads = testThreads.map(thread =>
           helpers.makeExpectedThread(
             testUsers,
@@ -84,7 +84,7 @@ describe('Threads Endpoints', function() {
         )
       )
 
-      it('responds with 200 and the specified thread', () => {
+      it.skip('responds with 200 and the specified thread', () => {
         const threadId = 2
         const expectedThread = helpers.makeExpectedThread(
           testUsers,
