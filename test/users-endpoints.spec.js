@@ -23,7 +23,7 @@ describe('Users Endpoints', function() {
 
   afterEach('cleanup', () => helpers.cleanTables(db))
 
-  describe.skip(`POST /api/users`, () => {
+  describe(`POST /api/users`, () => {
     context(`Happy path`, () => {
       it(`responds 201, serialized user, storing bcryped password`, () => {
         const newUser = {
@@ -39,15 +39,15 @@ describe('Users Endpoints', function() {
             expect(res.body).to.have.property('id')
             expect(res.body.username).to.eql(newUser.username)
             expect(res.body.realname).to.eql(newUser.realname)
-          })
-          .expect(res =>
+            // return res
+          // })
+          // .expect(res =>
             db
               .from('users')
               .select('*')
               .where({ id: res.body.id })
               .first()
               .then(row => {
-                console.log(row)
                 expect(row.username).to.eql(newUser.username)
                 expect(row.realname).to.eql(newUser.realname)
                 return bcrypt.compare(newUser.password, row.password)
@@ -55,7 +55,7 @@ describe('Users Endpoints', function() {
               .then(compareMatch => {
                 expect(compareMatch).to.be.true
               })
-          )
+            })
       })
     })
   })
